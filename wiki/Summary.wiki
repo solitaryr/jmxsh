@@ -1,6 +1,4 @@
-#summary What is Jmxsh?
 #labels Featured,Phase-Design,Phase-Requirements
-
 = What is jmxsh? =
 Jmxsh is a command-line interface to JMX-enabled Java processes.  The gist of JMX is that it allows you to get/set values and invoke methods in a running Java process from *outside* the process.
 
@@ -17,6 +15,12 @@ Sometimes you don't want a GUI, though.
 The number of CLI's for JMX is much smaller.  The major CLI for JMX out there is called [http://www.wlshell.net/ wlshell].  While designed by a BEA employee for use with WebLogic, it is still usable with non-WebLogic servers using JMX.  It features a nicely-implemented filesystem metaphor for exploring the mbean space.  However, rather than being built off an existing scripting language, it has its own domain-specific language.  It also lacks command-line history, globbing of mbean/domain names, and the easy installation/deployment of jmxsh (i.e., a single jar file).
 
 Using jmxsh to connect to a running Java application with JMX tunable attributes and operations is akin to using a control port.  In contrast to a control port, however, your Java application does not have to run a Tcl (or other script) interpreter internally, it does not have to run a telnetd, and it does not have to implement any kind of proprietary technology.
+
+= Why tcl? =
+
+There are many choices of a scripting language for Java these days, thanks to the expanded support in Java 6.  Tcl is a very simple, clean, consistent scripting language which was explicitly designed for control-port-like applications.  I want to keep this software simple and let it get out of the way of people trying to get work done.  I don't want to force users to study umpteen books on Ruby or Python or Object-Oriented design just to write a simple monitor.
+
+That said, I'm pragmatic--if enough people tell me Tcl doesn't work for them and they want to write in (say) BeanShell or Groovy, then I'll try to get that done.
 
 == Creating Custom MBean Classes?!  Meh. ==
 
@@ -36,16 +40,16 @@ Unfortunately, this is slated for Java 7.  Not much help now, eh?  Well, not so 
 
 It's easy provided you have the following:
 
-* The hostname where the Java process is running and the port it is listening on for JMX clients.
-* The username and password (if any) you need to specify when connecting.
-* A working Java 5 or Java 6 installation.
+  * The hostname where the Java process is running and the port it is listening on for JMX clients.
+  * The username and password (if any) you need to specify when connecting.
+  * A working Java 5 or Java 6 installation.
 
 Here's the 5-minute step-by-step:
 
-* Download the latest [http://code.google.com/p/jmxsh/downloads/list jmxsh jar file] from Google Code.
-* Run it (this should work on either Windows or Linux):
+  * Download the latest jmxsh.jar file.
+  * Run it (this should work on either Windows or Linux):
 
-<pre>
+{{{
 robc@april:/var/www/jmxsh$ java -jar jmxsh.jar
 jmxsh v1.0, Tue Jan 22 11:23:12 EST 2008
 
@@ -54,20 +58,20 @@ for usage help.
 
 Starting up in shell mode.
 %
-</pre>
+}}}
 
-* Connect (if there is no user/pass authentication, omit the -U argument):
+  * Connect (if there is no user/pass authentication, omit the -U argument):
 
-<pre>
+{{{
 % jmx_connect -h YOUR_HOST_HERE -p YOUR_PORT_HERE -U YOUR_USERNAME_HERE
 Password: **********
 Connected to service:jmx:rmi:///jndi/rmi://localhost:7777/jmxrmi.
-</pre>
+}}}
 
-* Start playing!  Currently you are in [[#Shell_Mode|Shell Mode]], which is basically an interactive tcl shell with a few extra commands.
-* To enter [[#Browse_Mode|Browse Mode]], hit enter at this prompt without typing anything else:
+  * Start playing!  Currently you are in [[#Shell_Mode|Shell Mode]], which is basically an interactive tcl shell with a few extra commands.
+  * To enter [[#Browse_Mode|Browse Mode]], hit enter at this prompt without typing anything else:
 
-<pre>
+{{{
 % 
 Entering browse mode.
 ====================================================
@@ -82,7 +86,7 @@ Entering browse mode.
 
 ====================================================
 Select a domain:
-</pre>
+}}}
 
 Feel free to explore further.  Now that you've had a quick taste of what a jmxsh session is like, we invite you to follow along the [[#Tour|Jmxsh Tour]] for a guided introduction to as many jmxsh features as I can fit in it.
 
