@@ -132,63 +132,10 @@ After that, it's all in setting up the System Properties correctly.
 
 = Release History =
 
-{| border="1" cellpadding="5"
-|-
-! Release
-! Date
-! Information
-|-
-| 1.0 "ERETRIA" Release
-| 01-22-2008
-| 
-* Lots of refactoring.
-* Fix version string in opening dialogue.
-* Add -H to specify a history file other than the default.
-* If history file cannot be written, continue without history rather than exiting.
-* If -n/--nohistory is specified, do not attempt to read history file.
-* Browse mode fixes/changes:
-** Don't display "java.lang." for type names in menus.
-** When selecting an attribute or operation from a menu, get the value or invoke the operation right away, instead of displaying another menu.
-** Differentiate between "null" result and a return from a void function.
-** Enable "down" in addition to "up".
-** Update "help", add "press enter to continue".
-* Shell mode fixes/changes:
-** Syntactically incorrect input now added to history.
-** Now use "long[]" instead of something like "[J" when specifying arrays in signatures to operations.
+  * 1.0 - January, 2008
 
-|-
-| 0.993 "MARMADUKE" Release
-| 01-08-2008
-| Accept -s server url for connections.  Fix parsing of array type names in attributes/operations.  Update version message.  Store connected servers in "SERVERS" variable.  Fix bugs in jmx_close.  Add -n/--noconvert option to get jmx_get/jmx_invoke result as a Java/Tcl java object reference.
-|-
-| 0.992
-| 01-08-2008
-| Handle Control-D/EOF properly when running interactively.
-|-
-| 0.991
-| 01-08-2008
-| Fix numerous bugs reported by Jon Schulz, allow prompting for password with interactive jmx_connect.
-|-
-| 0.99 "SDERKINS" Release
-| 12-17-2007
-| Add tree browser from Todd Baldwin's JMXshell.
-|-
-| 0.2
-| 11-28-2007
-| Add username/password authentication.
-|-
-| 0.1
-| 11-15-2007
-| Initial release.
-|}
 
 = Requests for Enhancement =
-
-<s>1) Provide a tree browser capability so that the user can browse up and down the JMX object/attribute tree without having to know the specific names of the objects and attributes. This will allow a user to browse without having a copy of jconsole running to list the object/attribute names.</s>
-
-<s>2) With the same intent provide a wild card based mechanism to specify objects and attributes.</s>
-
-<i>Hope the globbing within the Browse mode does what you need. -- rob</i>
 
 = Jmxsh Reference =
 
@@ -198,7 +145,7 @@ Following are the nuts-and-bolts details of jmxsh. All the stuff which used to b
 
 You can get jmxsh to cough up its command-line secrets with a -? option:
 
-<pre>
+{{{
 robc@april:/var/www/jmxsh$ java -jar jmxsh.jar -?
 Start a command-line interface to a JMX service provider.
 The first non-option argument, if present, is the
@@ -234,13 +181,13 @@ usage: java -jar jmxsh.jar [OPTIONS] -h host -p port [FILENAME ARGS]
  -U,--user <USER>                 Connect with this username.
  -v,--version                     Show version information.
 =========================================================================
-</pre>
+}}}
 
 == Shell Mode ==
 
 The Shell Mode, as has probably been mentioned several times before, is really just a Tcl shell.  You can get help by typing <tt>help</tt>.
 
-<pre>
+{{{
 % help
 =====================================================
    Shell Mode Help
@@ -336,4 +283,4 @@ To leave the Browse mode, press enter at an empty line.
 You will know you have left when you see the Shell prompt,
 '% '
 =====================================================
-</pre>
+}}}
