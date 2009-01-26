@@ -18,3 +18,5 @@ set string_list [$java_obj getrange]
 # now string_list is a simple Tcl list of strings that you can 
 # do whatever you want with
 }}}
+
+Note that you have to pass "-n" to the jmx_invoke command.  This tells it to give you the Java/Tcl object back, and not just the result of an Object.toString() call.
