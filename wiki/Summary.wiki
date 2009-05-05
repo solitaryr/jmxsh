@@ -1,6 +1,6 @@
 #labels Featured,Phase-Design,Phase-Requirements
 = What is jmxsh? =
-Jmxsh is a command-line interface to JMX-enabled Java processes.  The gist of JMX is that it allows you to get/set values and invoke methods in a running Java process from *outside* the process.
+Jmxsh is a command-line interface to JMX-enabled Java processes.  The gist of JMX is that it allows you to get/set values and invoke methods in a running Java process from *outside* the process.  It is released under the Apache Software License, Version 2.0.
 
 Jmxsh is built off of Jacl, the Java Tcl implementation.  Running jmxsh interactively provides you with a Tcl shell that has had a number of JMX-related commands added to it.  In addition, it is possible to explore the mbean space by browsing a series of text menus representing the hierarchy of servers/mbeans/domains/attributes/operations.
 
