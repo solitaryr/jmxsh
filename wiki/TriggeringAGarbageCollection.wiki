@@ -33,7 +33,10 @@ foreach {host} $hosts {
   # Close this connection
   jmx_close
 }
+}}}
 
+If the above were saved as "invoke_gc.jmxsh", then it may be invoked with:
 
-
+{{{
+$ java -jar jmxsh.jar invoke_gc.jmxsh
 }}}
